@@ -1,0 +1,11 @@
+{
+  "name": "material-todo",
+  "private": true,
+  "version": "0.0.0",
+  "description": "A starter project for AngularJS and Material Design",
+  "repository": "https://github.com/makingsensetraining/material-todo",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "*"
+  }
+}
