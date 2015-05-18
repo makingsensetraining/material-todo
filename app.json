@@ -3,5 +3,5 @@
   "description": "A barebones Node.js material todo list",
   "repository": "https://github.com/makingsensetraining/material-todo",
   "logo": "https://node-js-sample.herokuapp.com/node.svg",
-  "keywords": ["node", "materia", "angular"]
+  "keywords": ["node", "material", "angular"]
 }
