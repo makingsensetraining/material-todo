@@ -1,9 +1,12 @@
 {
-  "name": "material-todo",
-  "version": "0.0.1",
+  "name": "material-todo", 
   "description": "A starter project for AngularJS and Material Design",
+  "version": "0.0.1",
   "dependencies": {
     "express": "*"
+  },
+  "engines": {
+    "node": "0.10.x"
   },
   "scripts": {   
     "postinstall": "bower install"    
