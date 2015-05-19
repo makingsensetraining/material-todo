@@ -1,32 +1,27 @@
 'use strict';
 
-angular
-  .module('materialApp')
-  .controller('todoCtrl',
-  ['$scope', function todoCtrl($scope) {
+angular.module('materialApp')
+  .controller('todoCtrl', ['$scope', function todoCtrl($scope) {
 
     $scope.todos = [
-      { text: 'Make an Angular and Material Design App', done: true },
-      { text: 'Learn Github', done: false }];
+      { text: 'learn angular', done: true },
+      { text: 'build an angular app', done: false }];
+
+    $scope.completedCount = _.filter($scope.todos, function (todo) { return todo.done == true; })
 
     $scope.addTodo = function () {
       $scope.todos.push({ text: $scope.todoText, done: false });
       $scope.todoText = '';
     };
-
-    $scope.remaining = function () {
-      var count = 0;
-      angular.forEach($scope.todos, function (todo) {
-        count += todo.done ? 0 : 1;
-      });
-      return count;
-    };
-
+    
     $scope.archive = function () {
-      var oldTodos = $scope.todos;
-      $scope.todos = [];
-      angular.forEach(oldTodos, function (todo) {
-        if (!todo.done) $scope.todos.push(todo);
-      });
+      $scope.todos = _.reject($scope.todos, function (todo) { return todo.done == true; });
     };
-  }]);
+
+    $scope.$watch('todos', function () {
+
+      $scope.completedCount = _.filter($scope.todos, function (todo) { return todo.done == true; });
+
+    }, true);
+    
+}]);
