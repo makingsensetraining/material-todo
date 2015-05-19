@@ -1,13 +1,12 @@
 'use strict';
 
 angular.module('materialApp')
-  .controller('todoCtrl', ['$scope', function todoCtrl($scope) {
+  .controller('todoCtrl', function todoCtrl($scope, $location, helper) {
 
     $scope.todos = [
       { text: 'learn angular', done: true },
       { text: 'build an angular app', done: false }];
-
-    $scope.completedCount = _.filter($scope.todos, function (todo) { return todo.done == true; })
+    
 
     $scope.addTodo = function () {
       $scope.todos.push({ text: $scope.todoText, done: false });
@@ -15,13 +14,12 @@ angular.module('materialApp')
     };
     
     $scope.archive = function () {
-      $scope.todos = _.reject($scope.todos, function (todo) { return todo.done == true; });
+      $scope.todos = helper.reject($scope.todos);
     };
 
-    $scope.$watch('todos', function () {
-
-      $scope.completedCount = _.filter($scope.todos, function (todo) { return todo.done == true; });
-
+    $scope.$watch('todos', function () {     
+      //TODO investigate property tracking only 
+      $scope.completedCount =  helper.filter($scope.todos);
     }, true);
     
-}]);
+});
